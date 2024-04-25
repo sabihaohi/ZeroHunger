@@ -1,0 +1,39 @@
+﻿@{
+    ViewData["Title"] = "Create Request";
+    Layout = "~/Views/Shared/_RestaurantLayout.cshtml";
+}
+
+<h3>Added Food List</h3>
+
+<table class="table table-striped table-secondary">
+    <thead>
+        <tr>
+            <th scope="col">Food Name</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var f in Model)
+        {
+            <tr>
+                <td>@f.FoodName</td>
+                <td>@f.Quantity</td>
+                <td>
+                    <form method="POST" action="/Restaurant/RemoveFood">
+                        <input type="hidden" name="FoodName" value="@f.FoodName"/>
+                        <input type="hidden" name="Quantity" value="@f.Quantity"/>
+                        <input type="submit" value="Remove" class="btn btn-danger btn-sm"/>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if(Model.Count >= 1)
+{
+    <br /><br />
+    <a class="btn btn-sm btn-info" href="/Restaurant/ConfirmRequest">Confirm Request</a>
+}
+

@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Dashboard - Resturants";
+    Layout = "~/Views/Shared/_RestaurantLayout.cshtml";
+}
+
+<h1>My Requests</h1>
+
+<table class="table table-striped table-secondary">
+    <thead>
+        <tr>
+            <th scope="col">Req ID</th>
+            <th scope="col">Req Time</th>
+            <th scope="col">Preserve Time</th>
+            <th scope="col">Status</th>
+            <th scope="col">Details</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var req in Model)
+        {
+            <tr>
+                <td>@req.ReqId</td>
+                <td>@req.ReqTime</td>
+                <td>@req.PreserveTime</td>
+                <td>@req.Status</td>
+                <td><a href="/Restaurant/RequestDetails/@req.ReqId">Detail</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+

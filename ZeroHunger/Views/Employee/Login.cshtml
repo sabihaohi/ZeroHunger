@@ -1,0 +1,29 @@
+﻿@{
+    ViewData["Title"] = "Login - Employee";
+}
+
+<br />
+<main>
+    <section>
+        <h2 class="text-center text-decoration-underline">Employee Login.</h2> <br />
+        <p class="text-danger text-center">@ViewBag.ErrMsg</p>
+
+        <form method="POST" action="">
+            <div class="mb-3">
+                <label for="Email" class="form-label">Email Address</label>
+                <input type="email" class="form-control" id="Email" name="Email" value="@Model.Email">
+            </div>
+
+            <div class="mb-3">
+                <label for="Password" class="form-label">Password</label>
+                <input type="password" class="form-control" id="Password" name="Password" value="@Model.Password">
+            </div>
+
+            <br />
+            <div class="d-grid gap-2 d-md-block">
+                <button class="btn btn-primary w-full" type="submit">Login</button>
+            </div>
+        </form>
+
+    </section>
+</main>

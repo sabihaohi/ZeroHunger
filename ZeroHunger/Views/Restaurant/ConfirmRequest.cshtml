@@ -1,0 +1,26 @@
+﻿@{
+    ViewData["Title"] = "Confirm Request";
+    Layout = "~/Views/Shared/_RestaurantLayout.cshtml";
+}
+
+<br />
+<main>
+    <section>
+        <h2 class="text-center text-decoration-underline">Confirm Reqeust</h2> <br />
+        <p class="text-danger text-center">@ViewBag.ErrMsg</p>
+
+        <form method="POST" action="">
+            <div class="mb-3">
+                <label for="preTime" class="form-label">Maximum Preserve Date & Time</label>
+                <input type="datetime-local" class="form-control" id="preTime" name="preTime">
+            </div>
+
+            <br />
+            <div class="d-grid gap-2 d-md-block">
+                <button class="btn btn-primary w-full" type="submit">Confrim</button>
+            </div>
+        </form>
+
+    </section>
+</main>
+

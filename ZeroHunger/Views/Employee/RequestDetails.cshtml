@@ -1,0 +1,73 @@
+﻿@{
+    ViewData["Title"] = "Request Details";
+    Layout = "~/Views/Shared/_EmployeeLayout.cshtml";
+}
+
+<br />
+
+<div>
+    <h2 class="text-center text-decoration-underline">Request Details</h2> <br />
+    <p><strong>Request ID:</strong> @Model.ReqId</p>
+    <p><strong>Requestey By:</strong> @Model.Res.ResName</p>
+    <p><strong>Request Time:</strong> @Model.ReqTime</p>
+    <p><strong>Max Preserve Time:</strong> @Model.PreserveTime</p>
+    <p><strong>Assigned Employee:</strong> @Model.Emp.EmpName</p>
+    <p><strong>Request Status:</strong> @Model.Status</p>
+    <p><strong>Total Cost:</strong> @Model.TotalCost Bdt</p>
+    <p>
+        <strong>Collection Time:</strong> @if (Model.CollectTime > Model.ReqTime)
+        {
+            <span>@Model.CollectTime</span>
+        }
+    </p>
+    <p>
+        <strong>Completion Time:</strong> @if (Model.CompleteTime > Model.ReqTime)
+        {
+            <span>@Model.CompleteTime</span>
+        }
+    </p>
+</div>
+
+@if (Model.Status.Equals("Assigned"))
+{
+    <a href="/Employee/Collected/@Model.ReqId" class="btn btn-sm btn-success">Collected</a>
+}
+
+@if (Model.Status.Equals("Collected"))
+{
+    <hr />
+    <form method="POST" action="/Employee/Completed">
+        <input type="hidden" value="@Model.ReqId" name="ReqId"/>
+        <div class="mb-3">
+            <label for="TotalCost" class="form-label">Total Cost to Complete REQUEST*</label>
+            <input type="number" step="0.1" class="form-control" id="TotalCost" name="TotalCost">
+        </div>
+        <input type="submit" value="Complete Request" class="btn btn-sm btn-success" />
+    </form>
+    <hr />
+}
+
+<br />
+<h3>Foods in this Request:</h3>
+
+<table class="table table-striped table-secondary">
+    <thead>
+        <tr>
+            <th scope="col">Food Id</th>
+            <th scope="col">Food Name</th>
+            <th scope="col">Quantity</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var f in Model.Foods)
+        {
+            <tr>
+                <td>@f.FoodId</td>
+                <td>@f.FoodName</td>
+                <td>@f.Quantity</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+

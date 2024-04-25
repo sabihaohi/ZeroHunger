@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "All Requests";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>All Requests</h1>
+
+<table class="table table-striped table-secondary">
+    <thead>
+        <tr>
+            <th scope="col">Req ID</th>
+            <th scope="col">Req By</th>
+            <th scope="col">Req Time</th>
+            <th scope="col">Preserve Time</th>
+            <th scope="col">Status</th>
+            <th scope="col">Employee</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var req in Model)
+        {
+            <tr>
+                <td>@req.ReqId</td>
+                <td>@req.Res.ResName</td>
+                <td>@req.ReqTime</td>
+                <td>@req.PreserveTime</td>
+                <td>@req.Status</td>
+                <td>@req.Emp.EmpName</td>
+                <td><a class="btn btn-sm btn-info" href="/Admin/RequestDetails/@req.ReqId">Detail</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

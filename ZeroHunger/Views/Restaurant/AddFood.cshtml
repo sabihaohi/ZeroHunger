@@ -1,0 +1,32 @@
+﻿@{
+    ViewData["Title"] = "Add Food To Request";
+    Layout = "~/Views/Shared/_RestaurantLayout.cshtml";
+}
+
+<br />
+<main>
+    <section>
+        <h2 class="text-center text-decoration-underline">Food Information</h2> <br />
+
+        <form method="POST" action="">
+            <div class="mb-3">
+                <label for="FoodName" class="form-label">Food Name*</label>
+                <input type="text" class="form-control" id="FoodName" name="FoodName" value="@Model.FoodName">
+                <span class="text-danger">@Html.ValidationMessage("FoodName")</span>
+            </div>
+
+            <div class="mb-3">
+                <label for="Quantity" class="form-label">Quantity*</label>
+                <input type="number" class="form-control" id="Quantity" name="Quantity" value="@Model.Quantity">
+                <span class="text-danger">@Html.ValidationMessage("Quantity")</span>
+            </div>
+
+            <br />
+            <div class="d-grid gap-2 d-md-block">
+                <button class="btn btn-primary" type="submit">Add</button>
+            </div>
+
+        </form>
+
+    </section>
+</main>

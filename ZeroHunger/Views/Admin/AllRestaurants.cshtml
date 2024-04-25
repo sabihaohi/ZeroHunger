@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "All Restaurants";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h1>All Restaurants</h1>
+
+<table class="table table-striped table-secondary">
+    <thead>
+        <tr>
+            <th scope="col">Res Id</th>
+            <th scope="col">Res Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Address</th>
+            <th scope="col">Total Requests</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var res in Model)
+        {
+            <tr>
+                <td>@res.ResId</td>
+                <td>@res.ResName</td>
+                <td>@res.Email</td>
+                <td>@res.Address</td>
+                <td>@res.Requests.Count</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
